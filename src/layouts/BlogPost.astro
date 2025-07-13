@@ -1,0 +1,106 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+
+type Props = CollectionEntry<'guides'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <BaseHead title={title} description={description} />
+    <style>
+      .hero-image {
+        width: 100%;
+      }
+      .hero-image img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+      }
+      .prose {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+        color: transparent;
+        background-clip: text;
+      }
+      .post-title {
+        margin-bottom: 1em;
+        padding: 2.5em 0;
+        text-align: center;
+        line-height: 1;
+      }
+      .title h1 {
+        margin: 0 0 0.5em 0;
+      }
+      .date {
+        margin-bottom: 0.5em;
+      }
+      .last-updated-on {
+        font-style: italic;
+      }
+      a {
+        transition: opacity 0.2s ease-in-out !important;
+      }
+      a:hover {
+        opacity: 0.5 !important;
+        text-decoration: underline !important;
+      }
+    </style>
+  </head>
+
+  <body
+    class="text-[#113a5b] dark:text-[#aae2ff] dark:bg-[#1B553b] bg-[#6Bf5ab]"
+  >
+    <div
+      class="dark:bg-gradient-to-b text-[#113a5b] dark:text-[#aae2ff] fixed z-0 xs:top-[94px] sm:top-[72px] top-[70px] w-full xs:h-[calc(100vh-94px)] md:h-[calc(100vh-72px)] h-[calc(100vh-70px)]"
+    >
+    </div>
+    <main class="px-[2em] mx-auto mt-16 max-w-screen-lg w-full relative z-10">
+      <article>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <Image
+                width={1020}
+                height={510}
+                src={heroImage}
+                alt="Blog Post"
+                class="shadow-none"
+                loading="eager"
+              />
+            )
+          }
+        </div>
+        <div>
+          <div class="post-title" id={title.toLowerCase().replace(/ /g, '-')}>
+            <div class="date">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <h1 class="text-[#19102a] dark:text-[#61d2fb] title">{title}</h1>
+            <hr />
+          </div>
+          <slot />
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

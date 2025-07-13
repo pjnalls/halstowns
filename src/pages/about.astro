@@ -1,0 +1,68 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_ABOUT_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline src="/scripts/fouc-resolver.js"></script>
+    <BaseHead title={SITE_ABOUT_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      a {
+        transition: opacity 0.2s ease-in-out !important;
+      }
+      a:hover {
+        text-decoration: underline !important;
+        opacity: 0.5 !important;
+      }
+    </style>
+  </head>
+
+  <body
+    class="text-[#113a5b] dark:text-[#aae2ff] dark:bg-[#1B553b] bg-[#6Bf5ab]"
+  >
+    <header>
+      <script is:inline src="/scripts/fouc-resolver.js"></script>
+    </header>
+
+    <Layout
+      title="About Me"
+      description="Get to know more about me"
+      pubDate={new Date('November 16 2024')}
+      updatedDate={new Date('May 27 2025')}
+      heroImage="/about-me.avif"
+    >
+      <p>
+        I'm a software engineer and tutor with 8+ years of web and mobile
+        development experience. I primarily write code in Python, TypeScript,
+        and Go, and recently started learning Java, developing full-stack apps
+        and data science pipelines. I also train people and provide AI annotated
+        data to train it how to code in Python, Typescript, and Go 🧠.
+        <br /><br />
+        I'm a Master of Science in Information Technology postgraduate at the University
+        of the People (MS IT @ UoPeople) 📚.
+        <br /><br />
+        Once I graduate, I'd like to be a Master of Science in Computer Science postgraduate
+        with a Specialization in Machine Learning at Georgia Institute of Technology
+        (MS CS, ML @ Georgia Tech) ✨.
+        <br /><br />
+        When I'm not coding or studying, I spend most of my free time in introspection
+        🧘, cooking 🍳, and listening to a ton of music 🎧.
+        <br /><br />
+        Ultimately, I'm pursuing MS degrees in both IT and CS because 1️⃣ UoPeople
+        and Georgia Tech have the most affordable and highly accredited graduate
+        degree programs (as far as I know), and 2️⃣ I believe this is <i>the</i> time
+        to upskill for the AI revolution 🤖.
+      </p>
+    </Layout>
+  </body>
+</html>
