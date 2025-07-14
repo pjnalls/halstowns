@@ -1,8 +1,8 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
+// import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { SITE_BLOG_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { SITE_GUIDES_TITLE, SITE_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { type CollectionEntry, getCollection } from 'astro:content';
 
@@ -33,7 +33,7 @@ const posts = (await getCollection('guides')).sort(
       rel="stylesheet"
     />
     <script is:inline src="/scripts/fouc-resolver.js"></script>
-    <BaseHead title={SITE_BLOG_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={SITE_GUIDES_TITLE} description={SITE_DESCRIPTION} />
     <style>
       ul {
         display: flex;
@@ -110,7 +110,7 @@ const posts = (await getCollection('guides')).sort(
       class="dark:bg-gradient-to-b text-[#113a5b] dark:text-[#aae2ff] dark:from-[#173458] dark:to-[#1B553b] bg-gradient-to-b from-[#61dbfb] to-[#6Bf5ab] fixed z-0 xs:top-[94px] sm:top-[72px] top-[70px] w-full xs:h-[calc(100vh-94px)] md:h-[calc(100vh-72px)] h-[calc(100vh-70px)]"
     >
     </div>
-    <Header />
+    <!-- <Header post={post[0]} /> -->
     <main class="relative z-10 mt-16 max-w-screen-lg mx-auto flex flex-col gap-4">
       <ul>
         {
